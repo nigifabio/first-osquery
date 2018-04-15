@@ -1,0 +1,68 @@
+FORGE
+  remote: https://forgeapi.puppetlabs.com
+  specs:
+    example42-firewall (2.1.3)
+      example42-iptables (>= 2.0.0)
+      example42-puppi (>= 2.0.0)
+    example42-iptables (2.1.15)
+      example42-puppi (>= 2.0.0)
+      puppetlabs-concat (>= 0)
+      puppetlabs-stdlib (< 5.0.0, >= 3.2.0)
+    example42-monitor (2.0.4)
+      example42-puppi (>= 2.0.0)
+    example42-puppi (2.2.5)
+      puppetlabs-stdlib (< 5.0.0, >= 3.2.0)
+    puppetlabs-concat (2.2.1)
+      puppetlabs-stdlib (< 5.0.0, >= 4.2.0)
+    puppetlabs-stdlib (4.18.0)
+
+PATH
+  remote: /home/fnigi/dev/first_ams/SecGen/modules/build/puppet/secgen_functions
+  specs:
+    SecGen-secgen_functions (0.0.1)
+
+PATH
+  remote: /home/fnigi/dev/first_ams/SecGen/modules/services/unix/http/apache_wheezy_compatible/apache
+  specs:
+    SecGen-modules_services_unix_http_apache_wheezy_compatible_apache-apache (1.11.0)
+      puppetlabs-concat (< 3.0.0, >= 1.1.1)
+      puppetlabs-stdlib (< 5.0.0, >= 4.2.0)
+
+PATH
+  remote: /home/fnigi/dev/first_ams/SecGen/modules/services/unix/smb/samba
+  specs:
+    SecGen-modules_services_unix_smb_samba-samba (2.0.16)
+      example42-firewall (>= 2.0.0)
+      example42-monitor (>= 2.0.0)
+      example42-puppi (>= 2.0.0)
+
+PATH
+  remote: /home/fnigi/dev/first_ams/SecGen/modules/utilities/unix/audit_tools/scanners/nmap
+  specs:
+    SecGen-modules_utilities_unix_audit_tools_scanners_nmap-nmap (0.0.1)
+
+PATH
+  remote: /home/fnigi/dev/first_ams/SecGen/modules/utilities/unix/update/unix_update
+  specs:
+    SecGen-modules_utilities_unix_update_unix_update-unix_update (0.0.1)
+
+PATH
+  remote: /home/fnigi/dev/first_ams/SecGen/modules/vulnerabilities/unix/local/setuid_nmap
+  specs:
+    SecGen-modules_vulnerabilities_unix_local_setuid_nmap-setuid_nmap (0.0.1)
+
+PATH
+  remote: /home/fnigi/dev/first_ams/SecGen/modules/vulnerabilities/unix/webapp/gitlist_040
+  specs:
+    SecGen-modules_vulnerabilities_unix_webapp_gitlist_040-gitlist_040 (0.0.1)
+
+DEPENDENCIES
+  SecGen-modules_services_unix_http_apache_wheezy_compatible_apache-apache (>= 0)
+  SecGen-modules_services_unix_smb_samba-samba (>= 0)
+  SecGen-modules_utilities_unix_audit_tools_scanners_nmap-nmap (>= 0)
+  SecGen-modules_utilities_unix_update_unix_update-unix_update (>= 0)
+  SecGen-modules_vulnerabilities_unix_local_setuid_nmap-setuid_nmap (>= 0)
+  SecGen-modules_vulnerabilities_unix_webapp_gitlist_040-gitlist_040 (>= 0)
+  SecGen-secgen_functions (>= 0)
+  puppetlabs-stdlib (= 4.18.0)
+

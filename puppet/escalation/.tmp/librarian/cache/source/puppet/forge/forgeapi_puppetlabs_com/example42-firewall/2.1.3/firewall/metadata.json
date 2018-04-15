@@ -1,0 +1,32 @@
+{
+  "name": "example42-firewall",
+  "version": "2.1.3",
+  "summary": "Puppet firewall abstraction meta module",
+  "author": "Alessandro Franceschi",
+  "description": "This module provides abstraction defines to firewall resources managed by Puppet modules. It is used in the Example42 modules set but can be imported and used in other setups. According to the firewall tool used it may have the relevant module as dependency",
+  "dependencies": [
+    {
+      "name": "example42/puppi",
+      "version_requirement": ">= 2.0.0"
+    },
+    {
+      "name": "example42/iptables",
+      "version_requirement": ">= 2.0.0"
+    }
+  ],
+  "types": [
+
+  ],
+  "checksums": {
+    "LICENSE": "a300b604c66de62cf6e923cca89c9d83",
+    "Modulefile": "8f203adc1f6155172337b34554f0ab0d",
+    "README.md": "8657b6f5fd1e8e60c48e53cddbc74b87",
+    "Rakefile": "1162abd3c0623165a02cc4cf028b5a72",
+    "manifests/init.pp": "7d144e26fcdab077718cd0fa8e535df9",
+    "spec/defines/firewall_spec.rb": "059fd9bff884928cff034d9c6c75c3f7",
+    "spec/spec_helper.rb": "0db89c9a486df193c0e40095422e19dc"
+  },
+  "source": "UNKNOWN",
+  "project_page": "http://www.example42.com",
+  "license": "Apache2"
+}
