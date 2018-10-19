@@ -1,0 +1,49 @@
+stato dei servicepack / version OS
+Get-ADComputer -Filter {OperatingSystemVersion -ge “6”} -Property * | Format-Table Name,OperatingSystem,OperatingSystemVersion -Wrap -Auto
+
+You can do it with powershell by running this command;
+
+import-module activedirectory
+$90Days = (get-date).adddays(-90)
+Get-ADUser -properties * -filter {(lastlogondate -notlike "*" -OR lastlogondate -le $90days) -AND (passwordlastset -le $90days) -AND (enabled -eq $True) -and (PasswordNeverExpires -eq $false) -and (whencreated -le $90days)} | select-object name, SAMaccountname, passwordExpired, PasswordNeverExpires, logoncount, whenCreated, lastlogondate, PasswordLastSet, lastlogontimestamp | export-csv c:\Scirpts\90days.txt
+
+
+
+https://gallery.technet.microsoft.com/scriptcenter/Get-Inactive-Computer-in-54feafde
+
+
+bitlocker status
+   BitLockerPasswordSet = Get-ADObject -Filter "objectClass -eq 'msFVE-RecoveryInformation'" -SearchBase $Computer.distinguishedName -Properties msFVE-RecoveryPassword,whenCreated | Sort whenCreated -Descending | Select -First 1 | Select -ExpandProperty whenCreated
+   
+   
+   https://gallery.technet.microsoft.com/scriptcenter/Powershell-script-to-get-39c73c74
+   
+   server 
+   https://github.com/cunninghamp/Collect-ServerInfo/blob/master/Collect-ServerInfo.ps1
+   
+   
+   
+   script patching 
+   $threshold = (Get-Date).AddDays(-30)
+$computers = (Get-ADComputer -Filter * -SearchBase "ou=my ou, dc=domain, dc=local").Name
+$computerCount = ($computers.Count)
+$current = 0
+$results = foreach ($computer in $computers)
+{
+    Write-Verbose "Processing $computer"
+    Write-Progress -Activity "Testing $computerCount computers" -Status "Processing $computer" `
+        -PercentComplete $(++$current / $computerCount * 100)
+    if (Test-Connection -ComputerName $computer -Count 1 -Quiet)
+    {
+        $lastUpdate = gwmi Win32_QuickFixEngineering -ComputerName $computer | 
+            sort -Property InstalledOn -Descending | select -First 1
+        [PSCustomObject]@{
+            ComputerName = $computer
+            LastUpdate = $lastUpdate.InstalledOn
+        }
+    }
+    else
+    {
+        Write-Host "$computer not reponding to WMI call" -ForegroundColor Yellow
+    }
+port}

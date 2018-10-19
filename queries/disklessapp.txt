@@ -1,0 +1,1 @@
+SELECT name, path, pid FROM processes WHERE on_disk = 0;
